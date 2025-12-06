@@ -1,0 +1,6 @@
+org\rostats\itemeditor\ItemAttributeManager.class
+org\rostats\itemeditor\ItemEditorCommand.class
+org\rostats\itemeditor\ItemEditorPlugin.class
+org\rostats\itemeditor\ItemAttribute.class
+org\rostats\itemeditor\AttributeEditorGUI.class
+org\rostats\itemeditor\GUIListener.class
