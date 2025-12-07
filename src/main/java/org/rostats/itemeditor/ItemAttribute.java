@@ -42,11 +42,11 @@ public enum ItemAttribute {
 
     // Penetration & Ignore Def
     P_PEN_FLAT("PPenFlat", "§6P.Pen Flat", Material.IRON_NUGGET, "%.0f", 1.0, 10.0),
-    M_PEN_FLAT("MPenFlat", "§6M.Pen Flat", Material.LAPIS_LAZULI, "%.0f", 1.0, 10.0),
+    M_PEN_FLAT("MPenFlat", "§6M.Pen Flat", Material.LAPIS_LAZULI, "%.0f", 1.0, 10.0), // <-- CORRECTED: Used LAPIS_LAZULI
     IGNORE_PDEF_PERCENT("IgnorePDefPercent", "§6Ignore P.DEF %", Material.IRON_BLOCK, "%.1f%%", 1.0, 5.0),
     IGNORE_MDEF_PERCENT("IgnoreMDefPercent", "§6Ignore M.DEF %", Material.LAPIS_BLOCK, "%.1f%%", 1.0, 5.0),
     P_PEN_PERCENT("PPenPercent", "§6P.Pen %", Material.IRON_INGOT, "%.1f%%", 1.0, 5.0),
-    M_PEN_PERCENT("MPenPercent", "§6M.Pen %", Material.DIAMOND, "%.1f%%", 1.0, 5.0),
+    M_PEN_PERCENT("MPenPercent", "§6M.Pen %", Material.DIAMOND, "%.1f%%", 1.0, 5.0), // <-- CORRECTED: Used DIAMOND
     IGNORE_PDEF_FLAT("IgnorePDefFlat", "§6Ignore P.DEF Flat", Material.ANVIL, "%.0f", 1.0, 10.0),
     IGNORE_MDEF_FLAT("IgnoreMDefFlat", "§6Ignore M.DEF Flat", Material.BREWING_STAND, "%.0f", 1.0, 10.0),
 
