@@ -2,27 +2,19 @@ package org.rostats.itemeditor;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.rostats.ROStatsPlugin;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class ItemEditorPlugin extends JavaPlugin {
 
     private ROStatsPlugin corePlugin;
     private ItemAttributeManager attributeManager;
-    private ItemPresetManager presetManager;
-
-    // NEW: Map to track players currently using the chat lore editor
-    private final Map<UUID, StringBuilder> loreEditingPlayers = new HashMap<>();
 
     @Override
     public void onEnable() {
         // 1. Check for Core Plugin dependency
+        // ThaiRoStats-Core is the name in plugin.yml
         Plugin plugin = Bukkit.getPluginManager().getPlugin("ThaiRoStats-Core");
         if (plugin instanceof ROStatsPlugin roStatsPlugin) {
             this.corePlugin = roStatsPlugin;
@@ -33,9 +25,8 @@ public class ItemEditorPlugin extends JavaPlugin {
             return;
         }
 
-        // 2. Initialize Managers
+        // 2. Initialize Manager
         this.attributeManager = new ItemAttributeManager(corePlugin);
-        this.presetManager = new ItemPresetManager(this);
 
         // 3. Register Command
         PluginCommand command = getCommand("roitemedit");
@@ -44,17 +35,13 @@ public class ItemEditorPlugin extends JavaPlugin {
         }
 
         // 4. Register Listener
-        getServer().getPluginManager().registerEvents(new GUIListener(this, attributeManager, presetManager), this);
+        getServer().getPluginManager().registerEvents(new GUIListener(this, attributeManager), this);
 
         getLogger().info("✅ ThaiRoStats Item Editor Enabled!");
     }
 
     @Override
     public void onDisable() {
-        // Save presets on disable
-        if (presetManager != null) {
-            presetManager.savePresets();
-        }
         getLogger().info("❌ ThaiRoStats Item Editor Disabled!");
     }
 
@@ -64,17 +51,5 @@ public class ItemEditorPlugin extends JavaPlugin {
 
     public ItemAttributeManager getAttributeManager() {
         return attributeManager;
-    }
-
-    public ItemPresetManager getPresetManager() {
-        return presetManager;
-    }
-
-    // NEW: Lore Editor Management Getters
-    public Map<UUID, StringBuilder> getLoreEditingPlayers() {
-        return loreEditingPlayers;
-    }
-    public static Plugin getPluginInstance() {
-        return getPlugin(ItemEditorPlugin.class);
     }
 }
